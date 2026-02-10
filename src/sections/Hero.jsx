@@ -64,7 +64,7 @@ export function Hero() {
               <li className="fact">
                 <span className="factIcon" aria-hidden="true"><IconBriefcase size={18} /></span>
                 <span className="factLabel">Role</span>
-                <span className="factValue">Full Stack Developer</span>
+                <span className="factValue">Front End Developer</span>
               </li>
               {profile.experienceYears ? (
                 <li className="fact">
