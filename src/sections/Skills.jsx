@@ -22,7 +22,7 @@ export function Skills() {
           Skills
         </span>
       }
-      subtitle="A focused toolkit across frontend, backend, and product delivery."
+      subtitle="A focused toolkit across frontend, cybersecurity, and design tools."
     >
       <div className="gridSkills">
         {skillGroups.map((g) => (
