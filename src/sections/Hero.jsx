@@ -4,7 +4,6 @@ import {
   IconArrowRight,
   IconBriefcase,
   IconCalendar,
-  IconDownload,
   IconLocation,
   SocialIcon,
 } from '../components/Icons.jsx'
@@ -20,16 +19,13 @@ export function Hero() {
             <p className="heroSubtitle">{profile.summary}</p>
 
             <div className="heroActions">
-              <a className="btn" href={profile.cvUrl} target="_blank" rel="noreferrer noopener">
-                <span className="btnIcon" aria-hidden="true"><IconDownload size={18} /></span>
-                Get CV
-              </a>
-              <a className="btn btnGhost" href="#projects">
-                <span className="btnIcon" aria-hidden="true"><IconArrowRight size={18} /></span>
-                View Projects
+              <a className="btn btnWatch" href="#projects">
+                Projects
               </a>
               <a className="btn btnGhost" href="#skills">
-                <span className="btnIcon" aria-hidden="true"><IconArrowRight size={18} /></span>
+                <span className="btnIcon" aria-hidden="true">
+                  <IconArrowRight size={18} />
+                </span>
                 Skills
               </a>
             </div>

@@ -25,8 +25,13 @@ export function Skills() {
       subtitle="A focused toolkit across frontend, cybersecurity, and design tools."
     >
       <div className="gridSkills">
-        {skillGroups.map((g) => (
-          <div key={g.title} className="card">
+        {skillGroups.map((g, idx) => (
+          <div
+            key={g.title}
+            className="card"
+            data-aos="fade-up"
+            style={{ '--aos-delay': `${50 + idx * 100}ms`, '--aos-duration': '1150ms' }}
+          >
             <div className="skillGroupHeader">
               <span className="skillGroupIcon" aria-hidden="true">
                 <GroupIcon name={g.icon} />

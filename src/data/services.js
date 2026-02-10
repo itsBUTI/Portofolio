@@ -25,23 +25,8 @@ export const services = [
     desc: 'Reliable integrations with proper loading/error states and resilient data handling.',
   },
   {
-    title: 'Database Management',
-    icon: 'database',
-    desc: 'Practical data modeling with secure access patterns and scalable structure.',
-  },
-  {
-    title: 'AI Development',
+    title: 'Accessibility',
     icon: 'sparkles',
-    desc: 'AI-assisted features integrated responsibly, with UX clarity and safe fallbacks.',
-  },
-  {
-    title: 'SEO Optimization',
-    icon: 'search',
-    desc: 'Solid metadata, structure, and performance fundamentals for better visibility.',
-  },
-  {
-    title: 'Performance Optimization',
-    icon: 'bolt',
-    desc: 'Faster load times and smoother interactions by eliminating waste and jitter.',
+    desc: 'Inclusive interfaces with proper semantics, keyboard support, and real-world usability.',
   },
 ]
