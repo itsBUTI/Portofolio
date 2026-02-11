@@ -1244,10 +1244,12 @@ textarea.input {
 }
 
 @media (max-width: 520px) {
-  .btnSmall {
-    display: none;
-  }
   .brandText {
     max-width: 160px;
+  }
+
+  .navLang {
+    padding: 8px 10px;
+    min-width: 44px;
   }
 }

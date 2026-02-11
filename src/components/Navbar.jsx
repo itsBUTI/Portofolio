@@ -116,7 +116,7 @@ export function Navbar() {
 
         <button
           type="button"
-          className="btn btnGhost btnSmall"
+          className="btn btnGhost btnSmall navLang"
           onClick={toggleLanguage}
           aria-label={t('nav.languageToggleAria')}
         >
