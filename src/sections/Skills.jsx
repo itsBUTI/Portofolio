@@ -1,7 +1,8 @@
 import { Section } from '../components/Section.jsx'
-import { skillGroups } from '../data/skills.js'
 import { IconCode, IconPalette, IconServer } from '../components/Icons.jsx'
 import { IconSparkles } from '../components/Icons.jsx'
+import { getSkillGroups } from '../i18n/content.js'
+import { useLanguage, useT } from '../i18n/i18n.js'
 
 function GroupIcon({ name }) {
   if (name === 'code') return <IconCode size={18} />
@@ -10,6 +11,10 @@ function GroupIcon({ name }) {
 }
 
 export function Skills() {
+  const { lang } = useLanguage()
+  const t = useT()
+  const skillGroups = getSkillGroups(lang)
+
   return (
     <Section
       id="skills"
@@ -19,10 +24,10 @@ export function Skills() {
           <span className="titleIcon" aria-hidden="true">
             <IconSparkles size={22} />
           </span>
-          Skills
+          {t('sections.skills.title')}
         </span>
       }
-      subtitle="A focused toolkit across frontend, cybersecurity, and design tools."
+      subtitle={t('sections.skills.subtitle')}
     >
       <div className="gridSkills">
         {skillGroups.map((g, idx) => (

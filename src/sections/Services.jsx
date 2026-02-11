@@ -1,5 +1,4 @@
 import { Section } from '../components/Section.jsx'
-import { services } from '../data/services.js'
 import {
   IconBolt,
   IconCode,
@@ -10,6 +9,8 @@ import {
   IconServer,
   IconSparkles,
 } from '../components/Icons.jsx'
+import { getServices } from '../i18n/content.js'
+import { useLanguage, useT } from '../i18n/i18n.js'
 
 function ServiceIcon({ name }) {
   if (name === 'code') return <IconCode size={18} />
@@ -23,6 +24,10 @@ function ServiceIcon({ name }) {
 }
 
 export function Services() {
+  const { lang } = useLanguage()
+  const t = useT()
+  const services = getServices(lang)
+
   return (
     <Section
       id="services"
@@ -32,10 +37,10 @@ export function Services() {
           <span className="titleIcon" aria-hidden="true">
             <IconSparkles size={22} />
           </span>
-          Services
+          {t('sections.services.title')}
         </span>
       }
-      subtitle="What I can deliver with senior-level quality and discipline."
+      subtitle={t('sections.services.subtitle')}
     >
       <div className="gridServices">
         {services.map((s) => (

@@ -1,17 +1,22 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 
-import { profile } from '../data/profile.js'
+import { getProfile } from '../i18n/content.js'
+import { useLanguage, useT } from '../i18n/i18n.js'
 import { useActiveSection } from '../hooks/useActiveSection.js'
 import { Container } from './Container.jsx'
 
-const navItems = [
-  { id: 'top', label: 'Home' },
-  { id: 'projects', label: 'Projects' },
-  { id: 'skills', label: 'Skills' },
-  { id: 'services', label: 'Services' },
-]
-
 export function Navbar() {
+  const { lang, setLang } = useLanguage()
+  const t = useT()
+  const profile = getProfile(lang)
+
+  const navItems = [
+    { id: 'top', label: t('nav.items.home') },
+    { id: 'projects', label: t('nav.items.projects') },
+    { id: 'skills', label: t('nav.items.skills') },
+    { id: 'services', label: t('nav.items.services') },
+  ]
+
   const activeId = useActiveSection(navItems.map((i) => i.id))
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
@@ -22,6 +27,10 @@ export function Navbar() {
 
   const toggleMenu = useCallback(() => setIsMenuOpen((v) => !v), [])
   const closeMenu = useCallback(() => setIsMenuOpen(false), [])
+
+  const toggleLanguage = useCallback(() => {
+    setLang((prev) => (prev === 'sq' ? 'en' : 'sq'))
+  }, [setLang])
 
   const closeMenuAndFocusButton = useCallback(() => {
     closeMenu()
@@ -66,14 +75,14 @@ export function Navbar() {
   return (
     <header className="nav">
       <Container className="navInner">
-        <a className="brand" href="#top" aria-label="Go to top">
+        <a className="brand" href="#top" aria-label={t('nav.brandAria')}>
           <span className="brandMark" aria-hidden="true" />
           <span className="brandText">{profile.fullName}</span>
         </a>
 
         <nav
           id="primary-navigation"
-          aria-label="Primary"
+          aria-label={t('nav.primaryAria')}
           className={`navMenu ${isMenuOpen ? 'navMenuOpen' : ''}`.trim()}
         >
           <div className="navMenuPanel" ref={menuPanelRef}>
@@ -98,22 +107,31 @@ export function Navbar() {
 
               <li className="navMobileContact">
                 <a className="btn" href="#contact" onClick={closeMenu}>
-                  Contact
+                  {t('nav.contact')}
                 </a>
               </li>
             </ul>
           </div>
         </nav>
 
+        <button
+          type="button"
+          className="btn btnGhost btnSmall"
+          onClick={toggleLanguage}
+          aria-label={t('nav.languageToggleAria')}
+        >
+          {lang === 'en' ? 'SQ' : 'EN'}
+        </button>
+
         <a className="btn btnSmall navCta" href="#contact">
-          Contact
+          {t('nav.contact')}
         </a>
 
         <button
           type="button"
           className={`hamburger ${isMenuOpen ? 'hamburgerOpen' : ''}`.trim()}
           onClick={toggleMenu}
-          aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
+          aria-label={isMenuOpen ? t('nav.closeMenu') : t('nav.openMenu')}
           aria-controls="primary-navigation"
           aria-expanded={isMenuOpen}
           ref={menuButtonRef}

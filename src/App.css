@@ -1,5 +1,92 @@
 .app {
   min-height: 100vh;
+  position: relative;
+  z-index: 1;
+}
+
+.matrixBg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  opacity: 0.14;
+}
+
+.matrixContainer {
+  position: absolute;
+  inset: 0;
+  background: transparent;
+}
+
+.matrixColumn {
+  position: absolute;
+  top: -130%;
+  left: var(--x);
+  width: 20px;
+  height: 260%;
+  opacity: var(--op, 0.7);
+  animation: matrixFall var(--dur, 3.4s) linear infinite;
+  animation-delay: var(--delay, -1.5s);
+  white-space: nowrap;
+  filter:
+    drop-shadow(0 0 12px color-mix(in srgb, var(--accent-2) 18%, transparent))
+    drop-shadow(0 0 28px color-mix(in srgb, var(--accent) 12%, transparent));
+}
+
+.matrixColumn::before {
+  content: "アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲンABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+  position: absolute;
+  top: 0;
+  left: 0;
+  writing-mode: vertical-rl;
+  letter-spacing: 1px;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(
+    to bottom,
+    color-mix(in srgb, var(--text) 92%, transparent) 0%,
+    color-mix(in srgb, var(--accent-2) 92%, transparent) 10%,
+    color-mix(in srgb, var(--accent) 92%, transparent) 28%,
+    color-mix(in srgb, var(--accent) 40%, transparent) 62%,
+    transparent 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.matrixColumn:nth-child(odd)::before {
+  content: "アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン123456789";
+}
+
+.matrixColumn:nth-child(3n)::before {
+  content: "アカサタナハマヤラワイキシチニヒミリウクスツヌフムユルエケセテネヘメレオコソトノホモヨロヲン0987654321";
+}
+
+.matrixColumn:nth-child(5n)::before {
+  content: "ガザダバパギジヂビピグズヅブプゲゼデベペゴゾドボポヴァィゥェォャュョッABCDEFGHIJKLMNOPQRSTUVWXYZ";
+}
+
+@keyframes matrixFall {
+  0% {
+    transform: translateY(-10%);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(220%);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .matrixColumn {
+    animation: none;
+    top: 0;
+    height: 100%;
+    opacity: 0.18;
+  }
 }
 
 .container {
@@ -49,6 +136,27 @@
 
 .navCta {
   display: inline-flex;
+}
+
+.navCta.btn,
+.navMobileContact .btn {
+  transition:
+    transform 160ms ease,
+    filter 160ms ease,
+    background 160ms ease,
+    box-shadow 160ms ease,
+    border-color 160ms ease,
+    color 160ms ease;
+}
+
+.navCta.btn:hover,
+.navMobileContact .btn:hover {
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: rgba(5, 7, 13, 0.96);
+  border-color: var(--accent-2);
+  box-shadow:
+    0 0 0 4px color-mix(in srgb, var(--accent) 18%, transparent),
+    0 14px 40px color-mix(in srgb, var(--accent-2) 22%, transparent);
 }
 
 .hamburger {

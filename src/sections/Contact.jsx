@@ -1,29 +1,33 @@
 import { Section } from '../components/Section.jsx'
 import { ContactForm } from '../components/ContactForm.jsx'
-import { profile } from '../data/profile.js'
 import { IconMail, SocialIcon } from '../components/Icons.jsx'
+import { getProfile } from '../i18n/content.js'
+import { useLanguage, useT } from '../i18n/i18n.js'
 
 export function Contact() {
+  const { lang } = useLanguage()
+  const t = useT()
+  const profile = getProfile(lang)
+
   return (
     <Section
       id="contact"
-      eyebrow="Contact"
+      eyebrow={t('sections.contact.eyebrow')}
       title={
         <span className="titleWithIcon">
           <span className="titleIcon" aria-hidden="true">
             <IconMail size={22} />
           </span>
-          Get in touch
+          {t('sections.contact.title')}
         </span>
       }
-      subtitle="Share a short brief and I’ll reply with clear next steps."
+      subtitle={t('sections.contact.subtitle')}
     >
       <div className="contactGrid">
         <div className="card">
-          <h3 className="cardTitle">Contact channels</h3>
+          <h3 className="cardTitle">{t('sections.contact.channelsTitle')}</h3>
           <p className="muted">
-            Best via email or LinkedIn. If this is a project inquiry, include scope, timeline, and
-            any relevant links.
+            {t('sections.contact.channelsHint')}
           </p>
 
           <ul className="contactLinks">
@@ -46,7 +50,7 @@ export function Contact() {
         </div>
 
         <div className="card">
-          <h3 className="cardTitle">Message</h3>
+          <h3 className="cardTitle">{t('sections.contact.messageTitle')}</h3>
           <ContactForm />
         </div>
       </div>

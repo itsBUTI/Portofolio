@@ -1,13 +1,20 @@
-import { profile } from '../data/profile.js'
+import { getProfile } from '../i18n/content.js'
+import { useLanguage, useT } from '../i18n/i18n.js'
 import { Container } from './Container.jsx'
 import { SocialIcon } from './Icons.jsx'
 
 export function Footer() {
+  const { lang } = useLanguage()
+  const t = useT()
+  const profile = getProfile(lang)
+
   return (
     <footer className="footer">
       <Container className="footerInner">
-        <p className="muted">© {new Date().getFullYear()} {profile.fullName}. All rights reserved.</p>
-        <ul className="footerLinks" aria-label="Social links">
+        <p className="muted">
+          © {new Date().getFullYear()} {profile.fullName}. {t('footer.rights')}
+        </p>
+        <ul className="footerLinks" aria-label={t('footer.socialAria')}>
           {profile.socials
             .filter((s) => s.label !== 'Email')
             .map((s) => (

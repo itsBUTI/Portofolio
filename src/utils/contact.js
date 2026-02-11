@@ -18,7 +18,7 @@ export function buildMailtoHref({ to, name, email, subject, message }) {
   return `mailto:${safeTo}?subject=${encodedSubject}&body=${body}`
 }
 
-export async function submitContact({ endpoint, payload, signal }) {
+export async function submitContact({ endpoint, payload, signal, fallbackErrorMessage }) {
   const res = await fetch(endpoint, {
     method: 'POST',
     headers: {
@@ -31,7 +31,10 @@ export async function submitContact({ endpoint, payload, signal }) {
 
   if (res.ok) return { ok: true }
 
-  let errorMessage = 'Something went wrong. Please try again.'
+  let errorMessage =
+    typeof fallbackErrorMessage === 'string' && fallbackErrorMessage.trim()
+      ? fallbackErrorMessage
+      : 'Something went wrong. Please try again.'
   try {
     const data = await res.json()
     if (typeof data?.error === 'string') errorMessage = data.error
@@ -42,15 +45,19 @@ export async function submitContact({ endpoint, payload, signal }) {
   return { ok: false, errorMessage }
 }
 
-export async function submitEmailJs({ serviceId, templateId, publicKey, payload }) {
+export async function submitEmailJs({ serviceId, templateId, publicKey, payload, fallbackErrorMessage }) {
   try {
     await emailjs.send(serviceId, templateId, payload, { publicKey })
     return { ok: true }
   } catch (err) {
+    const fallback =
+      typeof fallbackErrorMessage === 'string' && fallbackErrorMessage.trim()
+        ? fallbackErrorMessage
+        : 'Something went wrong. Please try again.'
     const errorMessage =
       typeof err?.text === 'string'
         ? err.text
-        : 'Something went wrong. Please try again.'
+        : fallback
     return { ok: false, errorMessage }
   }
 }

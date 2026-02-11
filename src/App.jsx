@@ -11,16 +11,21 @@ import { Skills } from './sections/Skills.jsx'
 import { Services } from './sections/Services.jsx'
 import { Contact } from './sections/Contact.jsx'
 
-import { profile } from './data/profile.js'
+import { useLanguage, useT } from './i18n/i18n.js'
+import { getProfile } from './i18n/content.js'
 
 function App() {
+  const { lang } = useLanguage()
+  const t = useT()
+  const profile = getProfile(lang)
+
   useEffect(() => {
     document.documentElement.classList.add('js')
   }, [])
 
   useEffect(() => {
-    document.title = `${profile.fullName} — ${profile.role}`
-  }, [])
+    document.title = t('meta.title', { name: profile.fullName, role: profile.role })
+  }, [lang, profile.fullName, profile.role, t])
 
   useEffect(() => {
     const reduceMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)')

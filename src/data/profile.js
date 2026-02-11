@@ -8,7 +8,7 @@ export const profile = {
   email: 'bytyqibutrint78@gmail.com',
   headline: 'Senior web developer building clean, fast, production-grade UI.',
   summary:
-    'As a disciplined developer based in the heart of Prizren, I bring precision and creative innovation to every project. I specialize in building robust, scalable web applications that combine modern technology with intuitive user experiences.',
+    'As an upcoming full-stack developer from Prizren, Kosovo, I’m driven by a passion for clean code, performance, and impactful design. I build modern web applications using HTML, CSS, JavaScript and React blending functionality with smooth user experiences. Constantly learning and evolving, I aim to craft digital products that feel powerful, polished, and built to scale.',
   socials: [
     { label: 'GitHub', href: 'https://github.com/itsBUTI', icon: 'github' },
     {

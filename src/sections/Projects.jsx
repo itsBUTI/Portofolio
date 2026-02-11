@@ -1,9 +1,14 @@
 import { Section } from '../components/Section.jsx'
 import { ProjectCard } from '../components/ProjectCard.jsx'
-import { projects } from '../data/projects.js'
 import { IconSparkles } from '../components/Icons.jsx'
+import { getProjects } from '../i18n/content.js'
+import { useLanguage, useT } from '../i18n/i18n.js'
 
 export function Projects() {
+  const { lang } = useLanguage()
+  const t = useT()
+  const projects = getProjects(lang)
+
   return (
     <Section
       id="projects"
@@ -13,10 +18,10 @@ export function Projects() {
           <span className="titleIcon" aria-hidden="true">
             <IconSparkles size={22} />
           </span>
-          My Latest Projects
+          {t('sections.projects.title')}
         </span>
       }
-      subtitle="Real-world builds with modern UX, clean architecture, and production discipline."
+      subtitle={t('sections.projects.subtitle')}
     >
       <div className="gridCards">
         {projects.map((p) => (

@@ -1,6 +1,8 @@
 import { IconExternal, IconGitHub } from './Icons.jsx'
+import { useT } from '../i18n/i18n.js'
 
 export function ProjectCard({ project }) {
+  const t = useT()
   const hasLive = Boolean(project.liveUrl)
   const hasRepo = Boolean(project.repoUrl)
 
@@ -19,15 +21,15 @@ export function ProjectCard({ project }) {
         )}
 
         {hasLive || hasRepo ? (
-          <div className="mediaActions" aria-label="Project links">
+          <div className="mediaActions" aria-label={t('projects.card.linksAria')}>
             {hasLive ? (
               <a
                 className="iconBtn"
                 href={project.liveUrl}
                 target="_blank"
                 rel="noreferrer noopener"
-                aria-label={`${project.title} live demo`}
-                title="Live demo"
+                aria-label={t('projects.card.liveAria', { title: project.title })}
+                title={t('projects.card.liveTitle')}
               >
                 <IconExternal size={18} />
               </a>
@@ -38,8 +40,8 @@ export function ProjectCard({ project }) {
                 href={project.repoUrl}
                 target="_blank"
                 rel="noreferrer noopener"
-                aria-label={`${project.title} repository`}
-                title="Repository"
+                aria-label={t('projects.card.repoAria', { title: project.title })}
+                title={t('projects.card.repoTitle')}
               >
                 <IconGitHub size={18} />
               </a>
@@ -54,7 +56,7 @@ export function ProjectCard({ project }) {
       </div>
 
       {project.details?.length ? (
-        <div className="metaLines" aria-label="Project notes">
+        <div className="metaLines" aria-label={t('projects.card.notesAria')}>
           {project.details.map((line) => (
             <p key={line} className="metaLine">
               {line}
@@ -63,7 +65,7 @@ export function ProjectCard({ project }) {
         </div>
       ) : null}
 
-      <div className="pillRow" aria-label="Tech stack">
+      <div className="pillRow" aria-label={t('projects.card.techAria')}>
         {project.stack.map((s) => (
           <span key={s} className="pill pillSmall">
             {s}
