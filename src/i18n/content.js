@@ -1,6 +1,7 @@
 import autobesaScr from '../images/autobesa-scr.png'
 import bluepeakScr from '../images/bluepeak-scr.png'
 import motoriderScr from '../images/motorider-scr.png'
+import liburniaScr from '../images/liburnia-scr.png'
 
 const content = {
   en: {
@@ -71,6 +72,21 @@ const content = {
         repoUrl: 'https://github.com/itsBUTI/MotoRider.git',
         imageSrc: motoriderScr,
         imageAlt: 'MotoRider project preview',
+      },
+      {
+        title: 'Liburnia Impex',
+        description:
+          'A premium corporate website featuring a sophisticated dark-themed aesthetic with gold accents and modern glassmorphism.',
+        details: [
+          'Premium visual identity',
+          'Glassmorphism UI patterns',
+          'Smooth scroll-triggered animations',
+        ],
+        stack: ['React', 'Vite', 'Vanilla CSS', 'UI/UX'],
+        liveUrl: 'https://liburnia-impex.netlify.app',
+        repoUrl: 'https://github.com/itsBUTI/Liburnia-Impex',
+        imageSrc: liburniaScr,
+        imageAlt: 'Liburnia Impex project preview',
       },
     ],
 
@@ -194,6 +210,21 @@ const content = {
         repoUrl: 'https://github.com/itsBUTI/MotoRider.git',
         imageSrc: motoriderScr,
         imageAlt: 'Pamje e projektit MotoRider',
+      },
+      {
+        title: 'Liburnia Impex',
+        description:
+          'Një uebsajt premium i korporatës me një estetikë të sofistikuar të errët, me thekse të arta dhe xhamformizëm modern.',
+        details: [
+          'Identitet vizual premium',
+          'Modele UI Glassmorphism',
+          'Animacione të rrjedhshme me scroll',
+        ],
+        stack: ['React', 'Vite', 'Vanilla CSS', 'UI/UX'],
+        liveUrl: 'https://liburnia-impex.netlify.app',
+        repoUrl: 'https://github.com/itsBUTI/Liburnia-Impex',
+        imageSrc: liburniaScr,
+        imageAlt: 'Pamje e projektit Liburnia Impex',
       },
     ],
 
