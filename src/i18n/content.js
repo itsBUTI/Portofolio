@@ -130,6 +130,11 @@ const content = {
         skills: ['HTML', 'CSS', 'JavaScript', 'Bootstrap', 'jQuery', 'ReactJs'],
       },
       {
+        title: 'Backend',
+        icon: 'database',
+        skills: ['PHP', 'MySQL', 'phpMyAdmin'],
+      },
+      {
         title: 'Cybersecurity',
         icon: 'server',
         skills: ['Cybersecurity', 'Phishing', 'Man-in-the-Middle', 'SQL Injection'],
@@ -266,6 +271,11 @@ const content = {
         title: 'Frontend',
         icon: 'code',
         skills: ['HTML', 'CSS', 'JavaScript', 'Bootstrap', 'jQuery', 'ReactJs'],
+      },
+      {
+        title: 'Backend',
+        icon: 'database',
+        skills: ['PHP', 'MySQL', 'phpMyAdmin'],
       },
       {
         title: 'Siguri Kibernetike',

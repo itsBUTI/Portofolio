@@ -1,5 +1,5 @@
 import { Section } from '../components/Section.jsx'
-import { IconCode, IconPalette, IconServer } from '../components/Icons.jsx'
+import { IconCode, IconPalette, IconServer, IconDatabase } from '../components/Icons.jsx'
 import { IconSparkles } from '../components/Icons.jsx'
 import { getSkillGroups } from '../i18n/content.js'
 import { useLanguage, useT } from '../i18n/i18n.js'
@@ -7,6 +7,7 @@ import { useLanguage, useT } from '../i18n/i18n.js'
 function GroupIcon({ name }) {
   if (name === 'code') return <IconCode size={18} />
   if (name === 'server') return <IconServer size={18} />
+  if (name === 'database') return <IconDatabase size={18} />
   return <IconPalette size={18} />
 }
 

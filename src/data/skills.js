@@ -5,6 +5,11 @@ export const skillGroups = [
     skills: ['HTML', 'CSS', 'JavaScript', 'Bootstrap', 'jQuery', 'ReactJs'],
   },
   {
+    title: 'Backend',
+    icon: 'database',
+    skills: ['PHP', 'MySQL', 'phpMyAdmin'],
+  },
+  {
     title: 'Cybersecurity',
     icon: 'server',
     skills: ['Cybersecurity', 'Phishing', 'Man-in-the-Middle', 'SQL Injection'],
@@ -15,3 +20,4 @@ export const skillGroups = [
     skills: ['Figma', 'GitHub', 'Canva'],
   },
 ]
+

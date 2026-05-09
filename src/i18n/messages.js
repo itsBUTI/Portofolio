@@ -25,6 +25,7 @@ export const messages = {
       aria: 'Hero',
       kicker: "Hi, I’m",
       actions: {
+        cv: 'Get CV',
         projects: 'Projects',
         skills: 'Skills',
       },
@@ -144,6 +145,7 @@ export const messages = {
       aria: 'Hyrje',
       kicker: 'Përshëndetje, jam',
       actions: {
+        cv: 'Merr CV',
         projects: 'Projektet',
         skills: 'Aftësitë',
       },

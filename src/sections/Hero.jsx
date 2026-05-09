@@ -5,9 +5,11 @@ import {
   IconArrowRight,
   IconBriefcase,
   IconCalendar,
+  IconDownload,
   IconLocation,
   SocialIcon,
 } from '../components/Icons.jsx'
+import cvImage from '../images/Butrint Bytyqi CV.png'
 
 export function Hero() {
   const { lang } = useLanguage()
@@ -28,6 +30,12 @@ export function Hero() {
             <div className="heroActions">
               <a className="btn btnWatch" href="#projects">
                 {t('hero.actions.projects')}
+              </a>
+              <a className="btn btnGhost" href={cvImage} download="Butrint Bytyqi CV.png" target="_blank" rel="noreferrer noopener">
+                <span className="btnIcon" aria-hidden="true">
+                  <IconDownload size={18} />
+                </span>
+                {t('hero.actions.cv')}
               </a>
               <a className="btn btnGhost" href="#skills">
                 <span className="btnIcon" aria-hidden="true">
