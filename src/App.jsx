@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 
 import { Navbar } from './components/Navbar.jsx'
@@ -10,17 +10,23 @@ import { Projects } from './sections/Projects.jsx'
 import { Skills } from './sections/Skills.jsx'
 import { Services } from './sections/Services.jsx'
 import { Contact } from './sections/Contact.jsx'
+import Loader from './components/Loader.jsx'
 
 import { useLanguage, useT } from './i18n/i18n.js'
 import { getProfile } from './i18n/content.js'
 
 function App() {
+  const [loading, setLoading] = useState(true)
   const { lang } = useLanguage()
   const t = useT()
   const profile = getProfile(lang)
 
   useEffect(() => {
     document.documentElement.classList.add('js')
+    const timer = setTimeout(() => {
+      setLoading(false)
+    }, 2500)
+    return () => clearTimeout(timer)
   }, [])
 
   useEffect(() => {
@@ -28,6 +34,8 @@ function App() {
   }, [lang, profile.fullName, profile.role, t])
 
   useEffect(() => {
+    if (loading) return
+
     const reduceMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)')
       ?.matches
 
@@ -52,9 +60,11 @@ function App() {
 
     items.forEach((el) => observer.observe(el))
     return () => observer.disconnect()
-  }, [])
+  }, [loading])
 
   useEffect(() => {
+    if (loading) return
+
     const reduceMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)')
       ?.matches
 
@@ -79,7 +89,15 @@ function App() {
 
     items.forEach((el) => observer.observe(el))
     return () => observer.disconnect()
-  }, [])
+  }, [loading])
+
+  if (loading) {
+    return (
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', backgroundColor: 'var(--bg)' }}>
+        <Loader />
+      </div>
+    )
+  }
 
   return (
     <div className="app">
